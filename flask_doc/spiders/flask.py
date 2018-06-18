@@ -8,7 +8,7 @@ from flask_doc.items import PageItem
 class FlaskSpider(scrapy.spiders.CrawlSpider):
     name = 'flask'
     allowed_domains = ['flask.pocoo.org']
-    start_urls = ['http://flask.pocoo.org/']
+    start_urls = ['http://flask.pocoo.org/docs/0.12/']
 
     rules = (
             Rule(LinkExtractor(allow="http://flask.pocoo.org/docs/0.12/.*"), callback="parse_page", follow=True),
