@@ -11,10 +11,12 @@ class FlaskSpider(scrapy.spiders.CrawlSpider):
     start_urls = ['http://flask.pocoo.org/docs/0.12/']
 
     rules = (
-            Rule(LinkExtractor(allow="http://flask.pocoo.org/docs/0.12/.*"), callback="parse_page", follow=True),
+        Rule(LinkExtractor(allow="http://flask.pocoo.org/docs/0.12/.*"), callback="parse_page", follow=True),
     )
 
     def parse_page(self, response):
+        self.logger.info('xue---jun------') 
+        self.logger.info(response.url) 
         item = PageItem()
         item['url'] = response.url
         item['text'] = ' '.join(response.xpath('//text()').extract())
